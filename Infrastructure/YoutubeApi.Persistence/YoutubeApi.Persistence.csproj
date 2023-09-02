@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Core\YoutubeApi.Application\YoutubeApi.Application.csproj" />
     <ProjectReference Include="..\..\Core\YoutubeApi.Domain\YoutubeApi.Domain.csproj" />
   </ItemGroup>
 
