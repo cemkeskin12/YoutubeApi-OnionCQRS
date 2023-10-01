@@ -5,6 +5,8 @@ using YoutubeApi.Application.Exceptions;
 using System.Globalization;
 using MediatR;
 using YoutubeApi.Application.Beheviors;
+using YoutubeApi.Application.Features.Products.Rules;
+using YoutubeApi.Application.Bases;
 
 namespace YoutubeApi.Application
 {
@@ -16,6 +18,8 @@ namespace YoutubeApi.Application
 
             services.AddTransient<ExceptionMiddleware>();
 
+            services.AddRulesFromAssemblyContaining(assembly, typeof(BaseRules));
+
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(assembly));
 
             services.AddValidatorsFromAssembly(assembly);
@@ -23,6 +27,18 @@ namespace YoutubeApi.Application
 
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(FluentValidationBehevior<,>));
 
+        }
+
+        private static IServiceCollection AddRulesFromAssemblyContaining(
+            this IServiceCollection services,
+            Assembly assembly,
+            Type type)
+        {
+            var types = assembly.GetTypes().Where(t => t.IsSubclassOf(type) && type != t).ToList();
+            foreach (var item in types)
+                services.AddTransient(item);
+
+            return services;    
         }
     }
 }
