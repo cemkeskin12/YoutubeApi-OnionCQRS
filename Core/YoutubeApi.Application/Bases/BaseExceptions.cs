@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace YoutubeApi.Application.Bases
 {
-    public class BaseException : ApplicationException
+    public class BaseExceptions : ApplicationException
     {
-        public BaseException() { }
-        public BaseException(string message) : base(message) { }
+        public BaseExceptions() { }
+        public BaseExceptions(string message) : base(message) { }
     }
 }
