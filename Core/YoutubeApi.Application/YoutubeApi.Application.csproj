@@ -20,8 +20,4 @@
     <ProjectReference Include="..\YoutubeApi.Domain\YoutubeApi.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\Auth\Queries\" />
-  </ItemGroup>
-
 </Project>
