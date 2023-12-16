@@ -27,6 +27,8 @@ namespace YoutubeApi.Application
 
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(FluentValidationBehevior<,>));
 
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RedisCacheBehevior<,>));
+
         }
 
         private static IServiceCollection AddRulesFromAssemblyContaining(
